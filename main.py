@@ -5,6 +5,7 @@ import sys
 sys.path.insert(0, 'src')
 from ImageModel import ImageModel
 
-path = 'img/dot.png'
+path = 'img/demo.jpg'
 dummy = ImageModel(path)
-dummy.display()
+temp = dummy.asGrayScale()
+temp.display()
