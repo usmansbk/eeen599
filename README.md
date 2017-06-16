@@ -9,10 +9,14 @@
 ## Dependencies
 ### Back End Dependencies
 * This app's functionality depends on some python modules;
-  * **[Django](https://www.djangoproject.com/)** - This framework help is essential in handling of routes on the backend
+  * **pip**
+  * **numpy**
+  * **matplotlib**
+  * **Tkinter**
+  * **pillow**
 
 ## Front End Dependencies
-* The app's layout have been style using CSS
+* The app is a CLI app
 
 ## Installation and setup
 * Navigate to a directory of choice on terminal
@@ -30,6 +34,4 @@
   * cd eeen599/
 * Install the app's dependencies.
 * Run the app
-  * python app
-
-* Open a browser and goto `localhost:8081`
+  * python main`
