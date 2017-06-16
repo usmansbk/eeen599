@@ -12,6 +12,8 @@
   * **pip**
   * **numpy**
   * **matplotlib**
+  * **Tkinter**
+  * **pillow**
 
 ## Front End Dependencies
 * The app is a CLI app
@@ -32,6 +34,4 @@
   * cd eeen599/
 * Install the app's dependencies.
 * Run the app
-  * python app
-
-* Open a browser and goto `localhost:8081`
+  * python main`
