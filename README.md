@@ -9,10 +9,12 @@
 ## Dependencies
 ### Back End Dependencies
 * This app's functionality depends on some python modules;
-  * **[Django](https://www.djangoproject.com/)** - This framework help is essential in handling of routes on the backend
+  * **pip**
+  * **numpy**
+  * **matplotlib**
 
 ## Front End Dependencies
-* The app's layout have been style using CSS
+* The app is a CLI app
 
 ## Installation and setup
 * Navigate to a directory of choice on terminal
