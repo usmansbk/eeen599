@@ -3,9 +3,9 @@
 ## Introduction
 
 * ** `EEEN599` ** is a Python Powered Image Recognition App.
-  * Allows users to;
-        * Input Images
-        * View location of template image in larger image
+* Allows users to;
+  * Input Images
+  * View location of template image in larger image
 
 ## Dependencies
 ### Back End Dependencies
@@ -23,7 +23,7 @@
 
     >`git clone git@github.com:usmansbk/eeen599.git`
 
-  *Using HTTP;
+  * Using HTTP;
     
     >`https://github.com/usmansbk/eeen599.git`
 
