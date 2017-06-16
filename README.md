@@ -3,9 +3,9 @@
 ## Introduction
 
 * ** `EEEN599` ** is a Python Powered Image Recognition App.
-Allows users to;
-* Input Images
-* View location of template image in larger image
+  * Allows users to;
+        * Input Images
+        * View location of template image in larger image
 
 ## Dependencies
 ### Back End Dependencies
