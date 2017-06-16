@@ -29,9 +29,3 @@ class ImageModel:
         plt.imshow(self.imgarr)
         print self.imgarr
         plt.show()
-
-    def markRegion(self, x, y, length, height):
-        drawLine(self, x1, x2, length) #top
-        drawLine(self, x1, x2, length) #bottom
-        drawLine(self, y1, y2, height) #left
-        drawLine(self, y1, y2, height) #right
