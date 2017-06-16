@@ -9,6 +9,7 @@ import matplotlib.pyplot as plt
 class ImageModel:
 
     def __init__(self, imagepath):
+        self.ext = imagepath[-3:]
         self.img = Image.open(imagepath)
         self.imgarr = np.asarray(self.img)
         #print self.imgarr;
@@ -20,16 +21,16 @@ class ImageModel:
         '''
         Returns this ImageModel as grayscale
         '''
-        self.img.convert('L')
-        self.img.save('img/gray.jpg')
-        return ImageModel('img/gray.jpg')
+        gray = self.img.convert('L')
+        gray.save('img/gray.' + self.ext)
+        return ImageModel('img/gray.' + self.ext)
 
     def display(self):
         plt.imshow(self.imgarr)
         print self.imgarr
         plt.show()
 
-    def setBounds(self, x, y, length, height):
+    def markRegion(self, x, y, length, height):
         drawLine(self, x1, x2, length) #top
         drawLine(self, x1, x2, length) #bottom
         drawLine(self, y1, y2, height) #left
