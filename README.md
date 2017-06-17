@@ -3,8 +3,7 @@
 ## Introduction
 * **`EEEN599`** is a Python Powered Image Recognition App.
 * Allows users to;
-  * Input Images
-  * View location of template image in larger image
+  * Search for an sub-image in a larger image using BAT alogrithm
 
 ## Dependencies
 ### Back End Dependencies
@@ -16,7 +15,7 @@
   * **pillow**
 
 ## Front End Dependencies
-* The app is a CLI app
+* The app is a CLI application
 
 ## Installation and setup
 * Navigate to a directory of choice on terminal
