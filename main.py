@@ -16,5 +16,5 @@ img = 'img/img.jpg'
 iarr = ImageModel(img).getMatrix()
 imgModel = ImageModel(img)
 imgdemo = copy.deepcopy(iarr)
-markRegion(imgdemo, 0, 0, 50, 50)
+markRegion(imgdemo,15, 40, 50, 50)
 imgModel.display(imgdemo)
