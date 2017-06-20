@@ -14,11 +14,6 @@ def get_mean(img):
 def stddeviation(img):
     '''get the standard deviation'''
     mean = get_mean(img)
-    meansqr = get_meansqr(img, mean)
-    print mean, meansqr
-
-def get_meansqr(img, mean):
-    '''calculate mean square value'''
     result = 0
     count = 0
     for row in img:

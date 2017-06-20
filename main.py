@@ -4,19 +4,17 @@ App entry point
 import sys
 sys.path.insert(0, 'src')
 from ImageModel import ImageModel
+#from TestAlgo import *
 from ImageUtil import *
+from ImageStat import *
 import matplotlib.pyplot as plt
 import copy
 
 
-#path = 'img/dot.png'
-#path = 'img/demo3.jpg'
-path = 'img/demo2.png'
-demo = ImageModel(path)
-#temp = demo.asGrayScale()
-#temp.display()
-img = copy.deepcopy(demo.getMatrix())
-markRegion(img, 4, 4, 100, 50)
-#demo.display()
-plt.imshow(img)
-plt.show()
+img = 'img/img.jpg'
+#subimg = 'img/demo3.jpg'
+iarr = ImageModel(img).getMatrix()
+imgModel = ImageModel(img)
+imgdemo = copy.deepcopy(iarr)
+markRegion(imgdemo, 0, 0, 50, 50)
+imgModel.display(imgdemo)
