@@ -1,9 +1,9 @@
 def markRegion(img, row, col, length, height):
     '''Mark a region in an image with yellow boundary'''
     drawHLine(img, row, col, length)
-    drawHLine(img, row+height, col, length)
-    drawVLine(img, row, col, height)
-    drawVLine(img, row, col+length, height)
+    drawHLine(img, row+height-1, col, length)
+    drawVLine(img, row, col, height-1)
+    drawVLine(img, row, col+length, height-1)
 
 def drawHLine(img, row, col, length):
     '''Draw horizontal line'''
@@ -24,3 +24,10 @@ def colorYellow(pixel):
 def embedImage(src, dest):
     # embedd src image in destination image
     pass
+
+def getregion(img, row, col, length, height, imgHeight, imglength):
+    region = []
+    for r in range(height):
+        if (row+r < imgHeight and col+length < imglength):
+            region.append(img[row+r][col:col+length])
+    return region
