@@ -13,7 +13,7 @@ import copy
 
 
 img = 'img/img.jpg'
-subimg = 'img/subimg.png'
+subimg = 'img/subimg.jpg'
 
 subModel = ImageModel(subimg)
 imgModel = ImageModel(img)
@@ -25,6 +25,6 @@ imgdemo = copy.deepcopy(iarr)
 
 #markRegion(imgdemo,15, 40, 50, 50)
 #imgModel.display(imgdemo)
-print iarr
 test = Test(iarr, siarr)
-#test.search()
+test.search()
+#imgdemo.display()

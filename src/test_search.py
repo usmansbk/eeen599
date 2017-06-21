@@ -19,22 +19,24 @@ class Test:
     def search(self):
         rows = self.imgHeight/self.subimgheight
         cols = self.imglength/self.subimglength
-        print 'sub region'
         for row in range(rows):
             for col in range(cols):
-                # get region
                 r = row * self.subimgheight
                 c = col * self.subimglength
-                self.getregion(self.img, r, c, self.subimglength, self.subimgheight)
-            return
+                region = self.getregion(self.img, r, c, self.subimglength, self.subimgheight)
+                break
+            break
+        print 'Region in larger image mean = ', get_mean(region)
+        print 'Sub-image mean = ', get_mean(self.subimg)
+        print 'Standard deviation of region = ', stddeviation(region)
+        print 'Standard deviation of sub-image = ', stddeviation(self.subimg)
                 # compare analysis to saved analysis
                 # if matched mark region and log found
                 # else log 'not found'
 
     def getregion(self, img, row, col, length, height):
-        region = copy.deepcopy(self.subimg)
+        region = []
         for r in range(height):
             if (row+r < self.imgHeight and col+length < self.imglength):
-                print img[row+r][col:col+length]
-            return
-        #print region
+                region.append(img[row+r][col:col+length])
+        return region
