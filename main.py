@@ -13,7 +13,7 @@ import copy
 
 
 img = 'img/img.jpg'
-subimg = 'img/subimg.jpg'
+subimg = 'img/cantfind.jpg'
 
 subModel = ImageModel(subimg)
 imgModel = ImageModel(img)
