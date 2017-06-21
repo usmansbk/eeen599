@@ -24,28 +24,34 @@ class Test:
         r = 0
         c = 0
         found = False
+        should_display = False
         for row in range(rows):
             for col in range(cols):
                 r = row * self.subimgheight
                 c = col * self.subimglength
-                print self.subimglength, self.subimgheight
+                print 'row', r, 'col', c
                 region = getregion(self.img, r, c, self.subimglength,
                                     self.subimgheight, self.imgHeight,
                                     self.imglength)
                 found = self.analyze(region)
-                print found
                 if (found):
+                    should_display = True
+                    print 'found at location x:', c, ',y:', r
                     markRegion(self.imgcopy, r, c, self.subimglength, self.subimgheight)
-        model = ImageModel()
-        model.display(self.imgcopy)
+
+        if should_display:
+            model = ImageModel()
+            model.display(self.imgcopy)
+        else:
+            print 'Image not found!'
 
     def analyze(self, region):
         mean = get_mean(region)
         stddev = stddeviation(region)
-        #print 'mean of region is ', mean
-        #print 'mean of image is ', self.mean
-        #print 'standard deviation of region is ', stddev
-        #print 'standard deviation of image is ', self.stddev
+        print 'mean of region is ', mean
+        print 'mean of image is ', self.mean
+        print 'standard deviation of region is ', stddev
+        print 'standard deviation of image is ', self.stddev
 
         if ( mean/self.mean >= 1 and stddev/self.stddev >= 1):
             return True

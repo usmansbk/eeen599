@@ -3,11 +3,11 @@ def markRegion(img, row, col, length, height):
     drawHLine(img, row, col, length)
     drawHLine(img, row+height-1, col, length)
     drawVLine(img, row, col, height-1)
-    drawVLine(img, row, col+length, height-1)
+    drawVLine(img, row, col+length-1, height-1)
 
 def drawHLine(img, row, col, length):
     '''Draw horizontal line'''
-    for c in range(length+1):
+    for c in range(length):
         colorYellow(img[row][col+c])
 
 def drawVLine(img, row, col, height):
@@ -28,6 +28,6 @@ def embedImage(src, dest):
 def getregion(img, row, col, length, height, imgHeight, imglength):
     region = []
     for r in range(height):
-        if (row+r < imgHeight and col+length < imglength):
+        if (row+r <= imgHeight and col+length <= imglength):
             region.append(img[row+r][col:col+length])
     return region
