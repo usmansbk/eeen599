@@ -8,10 +8,11 @@ import matplotlib.pyplot as plt
 
 class ImageModel:
 
-    def __init__(self, imagepath):
-        self.ext = imagepath[-3:]
-        self.img = Image.open(imagepath)
-        self.imgarr = np.asarray(self.img)
+    def __init__(self, imagepath='null'):
+        if (imagepath != 'null'):
+            self.ext = imagepath[-3:]
+            self.img = Image.open(imagepath)
+            self.imgarr = np.asarray(self.img)
 
     def getMatrix(self):
         return self.imgarr;

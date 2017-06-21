@@ -20,3 +20,7 @@ def colorYellow(pixel):
     pixel[0] = 255
     pixel[1] = 255
     pixel[2] = 0
+
+def embedImage(src, dest):
+    # embedd src image in destination image
+    pass

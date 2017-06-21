@@ -13,18 +13,12 @@ import copy
 
 
 img = 'img/img.jpg'
-subimg = 'img/subimg.jpg'
+subimg = 'img/subimg2.jpg'
 
 subModel = ImageModel(subimg)
 imgModel = ImageModel(img)
 
 iarr = imgModel.getMatrix()
 siarr = subModel.getMatrix()
-
-imgdemo = copy.deepcopy(iarr)
-
-#markRegion(imgdemo,15, 40, 50, 50)
-#imgModel.display(imgdemo)
 test = Test(iarr, siarr)
-test.search()
-#imgdemo.display()
+result = test.search()
