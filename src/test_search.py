@@ -28,29 +28,26 @@ class Test:
             for col in range(cols):
                 r = row * self.subimgheight
                 c = col * self.subimglength
-                region = self.getregion(self.img, r, c, self.subimglength, self.subimgheight)
+                print self.subimglength, self.subimgheight
+                region = getregion(self.img, r, c, self.subimglength,
+                                    self.subimgheight, self.imgHeight,
+                                    self.imglength)
                 found = self.analyze(region)
+                print found
                 if (found):
                     markRegion(self.imgcopy, r, c, self.subimglength, self.subimgheight)
         model = ImageModel()
         model.display(self.imgcopy)
+
     def analyze(self, region):
         mean = get_mean(region)
         stddev = stddeviation(region)
-        print 'mean of region is ', mean
-        print 'mean of image is ', self.mean
-        print 'standard deviation of region is ', stddev
-        print 'standard deviation of image is ', self.stddev
+        #print 'mean of region is ', mean
+        #print 'mean of image is ', self.mean
+        #print 'standard deviation of region is ', stddev
+        #print 'standard deviation of image is ', self.stddev
 
         if ( mean/self.mean >= 1 and stddev/self.stddev >= 1):
             return True
         else:
             return False
-
-
-    def getregion(self, img, row, col, length, height):
-        region = []
-        for r in range(height):
-            if (row+r < self.imgHeight and col+length < self.imglength):
-                region.append(img[row+r][col:col+length])
-        return region
