@@ -12,7 +12,7 @@ class ImageModel:
         self.ext = imagepath[-3:]
         self.img = Image.open(imagepath)
         self.imgarr = np.asarray(self.img)
-        print self.imgarr;
+        #print self.imgarr;
 
     def getMatrix(self):
         return self.imgarr;

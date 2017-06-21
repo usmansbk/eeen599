@@ -1,5 +1,6 @@
 from ImageStat import *
 from ImageUtil import *
+import copy
 
 class Test:
     def __init__(self, img, subimg):
@@ -17,10 +18,23 @@ class Test:
 
     def search(self):
         rows = self.imgHeight/self.subimgheight
-        for row in range(0, rows, self.subimgheight):
-            for col in range(0, cols, self.subimglength):
+        cols = self.imglength/self.subimglength
+        print 'sub region'
+        for row in range(rows):
+            for col in range(cols):
                 # get region
-                # analyze region
+                r = row * self.subimgheight
+                c = col * self.subimglength
+                self.getregion(self.img, r, c, self.subimglength, self.subimgheight)
+            return
                 # compare analysis to saved analysis
                 # if matched mark region and log found
                 # else log 'not found'
+
+    def getregion(self, img, row, col, length, height):
+        region = copy.deepcopy(self.subimg)
+        for r in range(height):
+            if (row+r < self.imgHeight and col+length < self.imglength):
+                print img[row+r][col:col+length]
+            return
+        #print region

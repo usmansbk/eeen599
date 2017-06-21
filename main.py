@@ -7,14 +7,24 @@ from ImageModel import ImageModel
 #from TestAlgo import *
 from ImageUtil import *
 from ImageStat import *
+from test_search import Test
 import matplotlib.pyplot as plt
 import copy
 
 
 img = 'img/img.jpg'
-#subimg = 'img/demo3.jpg'
-iarr = ImageModel(img).getMatrix()
+subimg = 'img/subimg.png'
+
+subModel = ImageModel(subimg)
 imgModel = ImageModel(img)
+
+iarr = imgModel.getMatrix()
+siarr = subModel.getMatrix()
+
 imgdemo = copy.deepcopy(iarr)
-markRegion(imgdemo,15, 40, 50, 50)
-imgModel.display(imgdemo)
+
+#markRegion(imgdemo,15, 40, 50, 50)
+#imgModel.display(imgdemo)
+print iarr
+test = Test(iarr, siarr)
+#test.search()
