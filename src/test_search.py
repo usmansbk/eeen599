@@ -29,15 +29,16 @@ class Test:
             for col in range(cols):
                 r = row * self.subimgheight
                 c = col * self.subimglength
-                print 'row', r, 'col', c
+                print 'Location X:', c, 'Y:', r
                 region = getregion(self.img, r, c, self.subimglength,
                                     self.subimgheight, self.imgHeight,
                                     self.imglength)
                 found = self.analyze(region)
                 if (found):
                     should_display = True
-                    print 'found at location x:', c, ',y:', r
+                    print 'Found at location X:', c, 'Y:',r
                     markRegion(self.imgcopy, r, c, self.subimglength, self.subimgheight)
+                print '\n'
 
         if should_display:
             model = ImageModel()
@@ -53,7 +54,7 @@ class Test:
         print 'standard deviation of region is ', stddev
         print 'standard deviation of image is ', self.stddev
 
-        if ( mean/self.mean >= 1 and stddev/self.stddev >= 1):
+        if ( abs(mean - self.mean) >= 1 and abs(stddev - self.stddev >= 1)):
             return True
         else:
             return False

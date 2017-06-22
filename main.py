@@ -4,7 +4,6 @@ App entry point
 import sys
 sys.path.insert(0, 'src')
 from ImageModel import ImageModel
-#from TestAlgo import *
 from ImageUtil import *
 from ImageStat import *
 from test_search import Test
@@ -13,7 +12,7 @@ import copy
 
 
 img = 'img/img.jpg'
-subimg = 'img/cantfind.jpg'
+subimg = 'img/subimg5.jpg'
 
 subModel = ImageModel(subimg)
 imgModel = ImageModel(img)

@@ -23,3 +23,7 @@ def stddeviation(img):
                 count += 1
     variance = result / count
     return math.sqrt(variance)
+
+def mode(img):
+    '''get the mode'''
+    pass
