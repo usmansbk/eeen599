@@ -54,7 +54,7 @@ class Test:
         print 'standard deviation of region is ', stddev
         print 'standard deviation of image is ', self.stddev
 
-        if ( abs(mean - self.mean) >= 1 and abs(stddev - self.stddev >= 1)):
+        if ( mean/self.mean >= 1 and stddev/self.stddev>= 1 ):
             return True
         else:
             return False

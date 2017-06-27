@@ -11,6 +11,7 @@ class ImageModel:
     def __init__(self, imagepath='null'):
         if (imagepath != 'null'):
             self.ext = imagepath[-3:]
+            self.filename = imagepath[:-4]
             self.img = Image.open(imagepath)
             self.imgarr = np.asarray(self.img)
 
@@ -22,8 +23,8 @@ class ImageModel:
         Returns this ImageModel as grayscale
         '''
         gray = self.img.convert('L')
-        gray.save('img/gray.' + self.ext)
-        return ImageModel('img/gray.' + self.ext)
+        gray.save(self.filename + '-gray.' + self.ext)
+        return ImageModel(self.filename + '-gray.' + self.ext)
 
     def display(self, arr=[]):
         if (len(arr) == 0):
