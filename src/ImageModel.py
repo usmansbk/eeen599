@@ -18,14 +18,6 @@ class ImageModel:
     def getMatrix(self):
         return self.imgarr;
 
-    def asGrayScale(self):
-        '''
-        Returns this ImageModel as grayscale
-        '''
-        gray = self.img.convert('L')
-        gray.save(self.filename + '-gray.' + self.ext)
-        return ImageModel(self.filename + '-gray.' + self.ext)
-
     def display(self, arr=[]):
         if (len(arr) == 0):
             plt.imshow(self.imgarr)

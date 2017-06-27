@@ -7,12 +7,14 @@ class Test:
     def __init__(self, img, subimg):
         self.img = img
         self.subimg = subimg
+        self.subgray = asGrayScale(subimg)
+        self.gray = asGrayScale(img)
         self.imgcopy = copy.deepcopy(self.img)
         self.config()
 
     def config(self):
-        self.mean = get_mean(self.subimg)
-        self.stddev = stddeviation(self.subimg)
+        self.mean = get_mean(self.subgray)
+        self.stddev = stddeviation(self.subgray)
         self.imglength = len(self.img[0])
         self.imgHeight = len(self.img)
         self.subimglength = len(self.subimg[0])
@@ -29,8 +31,8 @@ class Test:
             for col in range(cols):
                 r = row * self.subimgheight
                 c = col * self.subimglength
-                print 'Location X:', c, 'Y:', r
-                region = getregion(self.img, r, c, self.subimglength,
+                #print 'Location X:', c, 'Y:', r
+                region = getregion(self.gray, r, c, self.subimglength,
                                     self.subimgheight, self.imgHeight,
                                     self.imglength)
                 found = self.analyze(region)
@@ -38,13 +40,14 @@ class Test:
                     should_display = True
                     print 'Found at location X:', c, 'Y:',r
                     markRegion(self.imgcopy, r, c, self.subimglength, self.subimgheight)
-                print '\n'
+                #print '\n'
 
+        model = ImageModel()
         if should_display:
-            model = ImageModel()
             model.display(self.imgcopy)
         else:
             print 'Image not found!'
+            model.display(self.gray)
 
     def analyze(self, region):
         mean = get_mean(region)
@@ -53,8 +56,10 @@ class Test:
         print 'mean of image is ', self.mean
         print 'standard deviation of region is ', stddev
         print 'standard deviation of image is ', self.stddev
-
-        if ( mean/self.mean >= 1 and stddev/self.stddev>= 1 ):
+        mean_diff = abs(mean - self.mean)
+        std_diff = abs(stddev - self.stddev)
+        if ( (mean_diff >= -2 and mean_diff <= 2) and
+             (std_diff >= -2 and std_diff <= 2) ):
             return True
         else:
             return False

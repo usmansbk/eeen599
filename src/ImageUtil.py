@@ -1,3 +1,5 @@
+import copy
+
 def markRegion(img, row, col, length, height):
     '''Mark a region in an image with yellow boundary'''
     drawHLine(img, row, col, length)
@@ -31,3 +33,14 @@ def getregion(img, row, col, length, height, imgHeight, imglength):
         if (row+r <= imgHeight and col+length <= imglength):
             region.append(img[row+r][col:col+length])
     return region
+
+def asGrayScale(img):
+    #print img[0][0][0]
+    gray = copy.deepcopy(img)
+    for row in gray:
+        for pixel in row:
+            pixel[0] *= 0.21
+            pixel[1] *= 0.72
+            pixel[2] *= 0.07
+        #print pixel
+    return gray

@@ -12,7 +12,7 @@ import copy
 
 
 img = 'img/img.jpg'
-subimg = 'img/template1.jpg'
+subimg = 'img/template5.jpg'
 
 subModel = ImageModel(subimg)
 imgModel = ImageModel(img)
