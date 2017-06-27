@@ -11,8 +11,8 @@ import matplotlib.pyplot as plt
 import copy
 
 
-img = 'img/pp.jpeg'
-subimg = 'img/subpp.jpg'
+img = 'img/img.jpg'
+subimg = 'img/template1.jpg'
 
 subModel = ImageModel(subimg)
 imgModel = ImageModel(img)
