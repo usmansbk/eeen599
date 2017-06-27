@@ -8,11 +8,12 @@ import matplotlib.pyplot as plt
 
 class ImageModel:
 
-    def __init__(self, imagepath):
-        self.ext = imagepath[-3:]
-        self.img = Image.open(imagepath)
-        self.imgarr = np.asarray(self.img)
-        #print self.imgarr;
+    def __init__(self, imagepath='null'):
+        if (imagepath != 'null'):
+            self.ext = imagepath[-3:]
+            self.filename = imagepath[:-4]
+            self.img = Image.open(imagepath)
+            self.imgarr = np.asarray(self.img)
 
     def getMatrix(self):
         return self.imgarr;
@@ -22,10 +23,13 @@ class ImageModel:
         Returns this ImageModel as grayscale
         '''
         gray = self.img.convert('L')
-        gray.save('img/gray.' + self.ext)
-        return ImageModel('img/gray.' + self.ext)
+        gray.save(self.filename + '-gray.' + self.ext)
+        return ImageModel(self.filename + '-gray.' + self.ext)
 
-    def display(self):
-        plt.imshow(self.imgarr)
-        print self.imgarr
-        plt.show()
+    def display(self, arr=[]):
+        if (len(arr) == 0):
+            plt.imshow(self.imgarr)
+            plt.show()
+        else:
+            plt.imshow(arr)
+            plt.show()

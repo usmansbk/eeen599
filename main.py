@@ -4,9 +4,20 @@ App entry point
 import sys
 sys.path.insert(0, 'src')
 from ImageModel import ImageModel
+from ImageUtil import *
+from ImageStat import *
+from test_search import Test
+import matplotlib.pyplot as plt
+import copy
 
-path = 'img/dot.png'
-demo = ImageModel(path)
-#temp = demo.asGrayScale()
-#temp.display()
-demo.display()
+
+img = 'img/img.jpg'
+subimg = 'img/template1.jpg'
+
+subModel = ImageModel(subimg)
+imgModel = ImageModel(img)
+
+iarr = imgModel.getMatrix()
+siarr = subModel.getMatrix()
+test = Test(iarr, siarr)
+result = test.search()
