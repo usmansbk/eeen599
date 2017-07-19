@@ -7,7 +7,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 class ImageModel:
-
+    
     def __init__(self, imagepath='null'):
         if (imagepath != 'null'):
             self.ext = imagepath[-3:]

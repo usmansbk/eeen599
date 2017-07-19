@@ -1,0 +1,48 @@
+#!/usr/bin/python
+from ImageStat import *
+from ImageUtil import *
+from ImageModel import ImageModel
+import copy
+
+class TestAlgorithm:
+    def __init__(self):
+        pass
+
+    def computeFitness(self):
+        self.mean = get_mean(self.subgray)
+        self.stddev = stddeviation(self.subgray)
+        self.imglength = len(self.img[0])
+        self.imgHeight = len(self.img)
+        self.subimglength = len(self.subimg[0])
+        self.subimgheight = len(self.subimg)
+
+    def setImage(self, img):
+        self.img = img
+        self.gray = asGrayScale(img)
+        self.imgcopy = copy.deepcopy(self.img)
+
+    def setTemplate(self, subimg):
+        self.subimg = subimg
+        self.subgray = asGrayScale(subimg)
+
+    def search(self):
+        rows = self.imgHeight/self.subimgheight
+        cols = self.imglength/self.subimglength
+        r = 0
+        c = 0
+        found = False
+        should_display = False
+        for row in range(rows):
+            for col in range(cols):
+                r = row * self.subimgheight
+                c = col * self.subimglength
+                region = getregion(self.gray, r, c, self.subimglength,
+                                    self.subimgheight, self.imgHeight,
+                                    self.imglength)
+                data = {'mean': self.mean, 'stddev': self.stddev}
+                found = fitness(region, data)
+                if (found):
+                    should_display = True
+                    print 'Found at location X:', c, 'Y:',r
+                    markRegion(self.imgcopy, r, c, self.subimglength, self.subimgheight)
+        return [should_display, self.imgcopy]

@@ -27,3 +27,18 @@ def stddeviation(img):
 def mode(img):
     '''get the mode'''
     pass
+
+def fitness(region, data):
+    mean = get_mean(region)
+    stddev = stddeviation(region)
+    print 'mean of region is ', mean
+    print 'mean of image is ', data['mean']
+    print 'standard deviation of region is ', stddev
+    print 'standard deviation of image is ', data['stddev']
+    mean_diff = abs(mean - data['mean'])
+    std_diff = abs(stddev - data['stddev'])
+    if ( (mean_diff >= -2 and mean_diff <= 2) and
+         (std_diff >= -2 and std_diff <= 2) ):
+        return True
+    else:
+        return False
