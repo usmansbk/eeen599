@@ -1,4 +1,3 @@
-#!/usr/bin/python
 from ImageStat import *
 from ImageUtil import *
 from ImageModel import ImageModel
@@ -6,7 +5,7 @@ import copy
 
 class TestAlgorithm:
     def __init__(self):
-        pass
+        print 'Test: Initializing Linear Search Algorithm'
 
     def computeFitness(self):
         self.mean = get_mean(self.subgray)

@@ -1,8 +1,9 @@
+#!/usr/bin/python
 """
 App entry point
 """
 import sys
-sys.path.insert(0, 'bin')
+sys.path.insert(0, 'src')
 from ImageModel import ImageModel
 from ImageUtil import *
 from ImageStat import *
@@ -16,6 +17,8 @@ imgpath = 'img/'
 img = imgpath + sys.argv[1]
 subimg = imgpath + sys.argv[2]
 
+## <-------- Commandline Error handling goes here --------->
+
 ### Create Image Model Objects
 subModel = ImageModel(subimg)
 imgModel = ImageModel(img)
@@ -25,10 +28,10 @@ iarr = imgModel.getMatrix()
 siarr = subModel.getMatrix()
 
 ### Instantiate a LocalSearch Object
-local = LocalSearch(iarr, siarr)
+local_search = LocalSearch(iarr, siarr)
 
 ### Instantiate Algorithm
 test_algo = TestAlgorithm()
 
 ### Pass Algorithm to local search function
-local.search(test_algo)
+local_search.search(test_algo)

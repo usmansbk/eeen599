@@ -1,4 +1,3 @@
-#!/usr/bin/python
 from ImageStat import *
 from ImageUtil import *
 from ImageModel import ImageModel

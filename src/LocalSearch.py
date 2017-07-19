@@ -17,7 +17,7 @@ class LocalSearch:
         algo.setImage(self.img)
         algo.setTemplate(self.subimg)
         algo.computeFitness()
-        result = algo.search() # returns a list [boolean, Image]
+        result = algo.search() # returns a list [boolean(hit), Image]
         found = result[0]
         if found:
             img = result[1]
