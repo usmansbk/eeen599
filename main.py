@@ -1,8 +1,11 @@
 #!/usr/bin/python
 """
-App entry point
+App main entry point
 """
 import sys
 sys.path.insert(0, 'src')
-## <----------------   START GUI -------------->
 from View import *
+
+print 'Starting program...'
+## <----------------   START GUI -------------->
+view = View("EEEN599-AI Optimization (BA)")

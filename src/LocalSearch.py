@@ -25,3 +25,4 @@ class LocalSearch:
             model.display(img)
         else:
             print 'Template image not found'
+        return found

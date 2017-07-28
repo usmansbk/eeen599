@@ -7,7 +7,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 class ImageModel:
-    
+
     def __init__(self, imagepath='null'):
         if (imagepath != 'null'):
             self.ext = imagepath[-3:]
@@ -21,7 +21,8 @@ class ImageModel:
     def display(self, arr=[]):
         if (len(arr) == 0):
             plt.imshow(self.imgarr)
-            plt.show()
         else:
             plt.imshow(arr)
-            plt.show()
+        plt.ion()
+        plt.draw()
+        plt.show()
