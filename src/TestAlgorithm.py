@@ -9,7 +9,7 @@ import copy
 
 class TestAlgorithm:
     def __init__(self):
-        print 'Test: Initializing Linear Search Algorithm'
+        print 'Initializing Test Linear Search Algorithm'
 
     def computeFitness(self):
         self.mean = get_mean(self.subgray)

@@ -9,8 +9,8 @@ import copy
 
 class BatAlgorithm:
     def __init__(self):
+        print 'Initializing local search BAT Algorithm'
         #bat params config
-        pass
 
     def setImage(self, img):
         self.img = img

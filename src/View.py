@@ -92,7 +92,7 @@ class View:
     	self.templateButton = Button(self.top, text="Template Image", command=self.load_template)
     	self.templateButton.pack()
 
-         # Search Button
+        # Search Button
     	self.searchButton = Button(self.top, text="Search", command=self.search)
     	self.searchButton.pack()
 
