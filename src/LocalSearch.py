@@ -1,3 +1,7 @@
+# Copyright 2017 Babakolo Usman Suleiman
+# This program is distributed under the terms of the GNU
+# General Public License (GPL).
+
 '''
 A local image search algorithm implemented using
 BAT algorithm and local random walk

@@ -1,3 +1,7 @@
+# Copyright 2017 Babakolo Usman Suleiman
+# This program is distributed under the terms of the GNU
+# General Public License (GPL).
+
 """
 This class represents an image model
 """
