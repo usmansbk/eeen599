@@ -47,7 +47,9 @@ class View:
         ### Create Image Model Objects
         print self.tmpfilename
         print self.imgfilename
-        if (self.tmpfilename != '' and self.imgfilename != ''):
+        if (self.tmpfilename == 'assets/noimg.png' or self.imgfilename == 'assets/noimg.png'):
+            self.var.set("SELECT IMAGE AND TEMPLATE")
+        elif (self.tmpfilename != '' and self.imgfilename != ''):
             self.var.set('SEARCHING...')
             self.top.update()
             subModel = ImageModel(self.tmpfilename)
@@ -69,7 +71,9 @@ class View:
                 self.var.set('TEMPLATE MATCH FOUND')
             else:
                 self.var.set('TEMPLATE MATCH NOT FOUND')
-            self.top.update()
+        else:
+            self.var.set('ENCOUNTERED ERROR!')
+        self.top.update()
 
     def initialize(self):
     	im = Image.open(self.imgfilename)
