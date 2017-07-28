@@ -15,7 +15,7 @@
   * **pillow**
 
 ## Front End Dependencies
-* The app is a CLI application
+* The app Graphical User Interface was developed with Tkinter modules
 
 ## Installation and setup
 * Navigate to a directory of choice on terminal
