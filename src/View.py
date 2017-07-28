@@ -4,17 +4,10 @@
 
 from Tkinter import *
 from tkFileDialog import *
-import tkMessageBox
 from PIL import Image, ImageTk
-
 from ImageModel import ImageModel
-from ImageUtil import *
-from ImageStat import *
-
 from LocalSearch import LocalSearch
 from TestAlgorithm import TestAlgorithm
-import matplotlib.pyplot as plt
-import copy
 
 class View:
     def __init__(self, title):

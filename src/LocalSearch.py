@@ -6,9 +6,6 @@
 A local image search algorithm implemented using
 BAT algorithm and local random walk
 '''
-
-from ImageStat import *
-from ImageUtil import *
 from ImageModel import ImageModel
 import copy
 
