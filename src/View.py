@@ -16,7 +16,6 @@ class View:
         self.top.iconbitmap('assets/icon.ico')
     	self.imgfilename = 'assets/noimg.png'
     	self.tmpfilename = 'assets/noimg.png'
-    	self.initialize()
 
     def load_image(self):
         filename = askopenfilename(parent=self.top)
@@ -72,7 +71,7 @@ class View:
             self.var.set('ENCOUNTERED ERROR!')
         self.top.update()
 
-    def initialize(self):
+    def start(self):
     	im = Image.open(self.imgfilename)
     	self.imagecanvas = Canvas(self.top, height=im.height, width=im.width)
     	self.imagecanvas.image = ImageTk.PhotoImage(im)
