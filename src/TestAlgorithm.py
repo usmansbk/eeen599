@@ -9,11 +9,12 @@ import copy
 
 class TestAlgorithm:
     def __init__(self):
-        print 'Initializing Test Linear Search Algorithm'
+        print 'Initializing Brute Force Search Algorithm'
 
     def computeFitness(self):
         self.mean = get_mean(self.subgray)
         self.stddev = stddeviation(self.subgray)
+        self.median = get_median(self.subgray)
         self.imglength = len(self.img[0])
         self.imgHeight = len(self.img)
         self.subimglength = len(self.subimg[0])
@@ -31,18 +32,17 @@ class TestAlgorithm:
     def search(self):
         rows = self.imgHeight/self.subimgheight
         cols = self.imglength/self.subimglength
-        r = 0
-        c = 0
         found = False
         should_display = False
         for row in range(rows):
             for col in range(cols):
+                print 'row = ', row, 'col = ', col
                 r = row * self.subimgheight
                 c = col * self.subimglength
                 region = getregion(self.gray, r, c, self.subimglength,
                                     self.subimgheight, self.imgHeight,
                                     self.imglength)
-                data = {'mean': self.mean, 'stddev': self.stddev}
+                data = {'mean': self.mean, 'stddev': self.stddev, 'median': self.median}
                 found = fitness(region, data)
                 if (found):
                     should_display = True
