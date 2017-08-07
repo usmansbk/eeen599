@@ -7,7 +7,7 @@ from ImageUtil import *
 from ImageModel import ImageModel
 import copy
 
-class BA_Search:
+class BatAlgorithm:
     def __init__(self):
         print 'Initializing local search BAT Algorithm'
         #bat params config

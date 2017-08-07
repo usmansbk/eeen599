@@ -4,7 +4,7 @@
 
 import math
 
-upper_threshold = 0.2
+upper_threshold = 1
 lower_threshold = 1
 
 def get_mean(img):
@@ -70,6 +70,6 @@ def fitness(region, data):
     std_diff = abs(stddev - data['stddev'])
     median_diff = abs(median - data['median'])
     found = False
-    if (  mean_diff <=upper_threshold and std_diff <= upper_threshold and median_diff <= 1):
+    if (  mean_diff <=upper_threshold and std_diff <= upper_threshold and median_diff <= upper_threshold):
         found = True
     return found
