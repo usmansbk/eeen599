@@ -62,8 +62,8 @@ def fitness(region, data):
     median = get_median(region)
     mean_diff = abs(mean - data['mean'])
     std_diff = abs(stddev - data['stddev'])
-    median_diff = (median - data['median'])
+    median_diff = (median == data['median'])
     found = False
-    if (  mean_diff <=lower_threshold and std_diff <= upper_threshold and median_diff <= 1):
+    if (  mean_diff <=lower_threshold and std_diff <= upper_threshold and median_diff):
         found = True
     return found

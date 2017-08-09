@@ -18,7 +18,6 @@ class BatAlgorithm:
         self.iterations = self.rows * self.cols
         self.location = { 'x':0, 'y': 0}
         self.loudness = 1
-        self.operations
 
     def setImage(self, img):
         self.img = img
@@ -80,19 +79,15 @@ class BatAlgorithm:
         if row > 0:
             north = getregion(self.gray, (row-self.loudness)*subhigh, col*sublen, sublen, subhigh, imghigh, imglen)
             n_fitness = fitness(north, self.data)
-            print n_fitness
         if row < self.rows:
             south = getregion(self.gray, ((row+self.loudness)%self.rows)*subhigh, col*sublen, sublen, subhigh, imghigh, imglen)
             s_fitness = fitness(south, self.data)
-            print s_fitness
         if col < self.cols:
             east = getregion(self.gray, row*subhigh, ((col+self.loudness)%self.cols)*sublen, sublen, subhigh, imghigh, imglen)
             e_fitness = fitness(east, self.data)
-            print e_fitness
         if col > 0:
             west = getregion(self.gray, row*subhigh, (col-self.loudness)*sublen, sublen, subhigh, imghigh, imglen)
             w_fitness = fitness(west, self.data)
-            print w_fitness
 
         #get best region
         if n_fitness:
