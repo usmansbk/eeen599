@@ -52,13 +52,25 @@ class BatAlgorithm:
                 should_display = True
                 print 'Found at location X:', c, 'Y:',r
                 markRegion(self.imgcopy, r, c, self.subimglength, self.subimgheight)
-                print 'Number of iterations', itr
+                print 'Number of iterations', (itr+1)
                 break
             else:
-                x_vel = random.randrange(self.cols)
-                y_vel = random.randrange(self.rows)
+                echo = self.emitSonar(r, c)
+                detected = echo[0]
+                if detected:
+                    new_velocity = echo[1]
+                    x_vel = new_velocity['x']
+                    y_vel = new_velocity['y']
+                else:
+                    x_vel = random.randrange(self.cols)
+                    y_vel = random.randrange(self.rows)
                 self.moveBat(x_vel, y_vel)
         return [should_display, self.imgcopy]
+
+    def emitSonar(self, cur_row, cur_col):
+        best_solution = {}
+        echo = [True, {'x': 0, 'y': 2}]
+        return echo
 
     def moveBat(self, x_vel, y_vel):
         self.location['x'] = (self.location['x'] + x_vel) % self.rows
