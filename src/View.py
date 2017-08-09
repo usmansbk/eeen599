@@ -61,11 +61,11 @@ class View:
             local_search = LocalSearch(iarr, siarr)
 
             ### Instantiate Algorithm
-            #test_algo = TestAlgorithm()
+            #brute_algo = BruteForceAlgorithm()
             bat_algo = BatAlgorithm()
 
             ### Pass Algorithm to local search function
-            #found = local_search.search(test_algo)
+            #found = local_search.search(brute_algo)
             found = local_search.search(bat_algo)
             if found:
                 self.var.set('TEMPLATE MATCH FOUND')

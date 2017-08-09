@@ -55,7 +55,7 @@ class BatAlgorithm:
                 print 'Number of iterations', (itr+1)
                 break
             else:
-                echo = self.emitSonar(r, c)
+                echo = self.emitSonar(self.location['x'], self.location['y'])
                 detected = echo[0]
                 if detected:
                     new_velocity = echo[1]
@@ -67,10 +67,44 @@ class BatAlgorithm:
                 self.moveBat(x_vel, y_vel)
         return [should_display, self.imgcopy]
 
-    def emitSonar(self, cur_row, cur_col):
-        best_solution = {}
-        echo = [True, {'x': 0, 'y': 2}]
+    def emitSonar(self, row, col):
+        #get regions
+        west = east = north = south = None
+        sublen = self.subimglength
+        subhigh = self.subimgheight
+        imglen = self.imglength
+        imghigh = self.imgHeight
+        if row > 0:
+            north = getregion(self.gray, row-self.loudness, col, sublen, subhigh, imglen, imghigh)
+        if row < self.rows:
+            south = getregion(self.gray, row+self.loudness, col, sublen, subhigh, imglen, imghigh)
+        if col > 0:
+            east = getregion(self.gray, row, col-self.loudness, sublen, subhigh, imglen, imghigh)
+        if col < self.cols:
+            west = getregion(self.gray, row, col+self.loudness, sublen, subhigh, imglen, imghigh)
+
+        #get best solution
+        best_solution = self.get_bestregion(north, south, east, west)
+        is_detected = best_solution[0]
+        location = best_solution[1]
+
+        echo = [is_detected, {'x': location[0], 'y': location[1]}]
         return echo
+
+    def get_bestregion(self, north, south, east, west):
+        if north != None:
+            north_data = getData(north, 'n')
+            print 'North', north_data
+        if south != None:
+            south_data = getData(south, 's')
+            print 'South', south_data
+        if east != None:
+            east_data = getData(east, 'e')
+            print 'East', east_data
+        if west != None:
+            west_data = getData(west, 'w')
+            print 'West', west_data
+        return [True, [0, 2]]
 
     def moveBat(self, x_vel, y_vel):
         self.location['x'] = (self.location['x'] + x_vel) % self.rows

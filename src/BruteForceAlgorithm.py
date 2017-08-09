@@ -7,7 +7,7 @@ from ImageUtil import *
 from ImageModel import ImageModel
 import copy
 
-class TestAlgorithm:
+class BruteForceAlgorithm:
     def __init__(self):
         print 'Initializing Brute Force Search Algorithm'
 

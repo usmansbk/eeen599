@@ -56,6 +56,13 @@ def get_median(img):
         mid = n / 2
         return (lst[mid] + lst[mid+1]) / 2
 
+def getData(region, d):
+    direction = d
+    mean = get_mean(region)
+    stddev = stddeviation(region)
+    median = get_median(region)
+    return { 'direction':direction, 'mean':mean, 'stddev':stddev, 'median':median }
+
 def fitness(region, data):
     mean = get_mean(region)
     stddev = stddeviation(region)
