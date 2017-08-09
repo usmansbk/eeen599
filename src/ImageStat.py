@@ -4,7 +4,7 @@
 
 import math
 
-upper_threshold = 1
+upper_threshold = 0.4
 lower_threshold = 1
 
 def get_mean(img):
@@ -56,27 +56,14 @@ def get_median(img):
         mid = n / 2
         return (lst[mid] + lst[mid+1]) / 2
 
-def getData(region, d):
-    direction = d
-    mean = get_mean(region)
-    stddev = stddeviation(region)
-    median = get_median(region)
-    return { 'direction':direction, 'mean':mean, 'stddev':stddev, 'median':median }
-
 def fitness(region, data):
     mean = get_mean(region)
     stddev = stddeviation(region)
     median = get_median(region)
-    print 'mean of region is ', mean
-    print 'mean of image is ', data['mean']
-    print 'median of region is ', median
-    print 'median of image is ', data['median']
-    print 'standard deviation of region is ', stddev
-    print 'standard deviation of image is ', data['stddev']
     mean_diff = abs(mean - data['mean'])
     std_diff = abs(stddev - data['stddev'])
-    median_diff = (median == data['median'])
+    median_diff = (median - data['median'])
     found = False
-    if (  mean_diff <=upper_threshold and std_diff <= upper_threshold and median_diff):
+    if (  mean_diff <=lower_threshold and std_diff <= upper_threshold and median_diff <= 1):
         found = True
     return found

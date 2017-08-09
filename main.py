@@ -6,7 +6,7 @@
 App main entry point
 """
 import sys
-sys.path.insert(0,'src')
+sys.path.insert(0,'lib')
 from View import *
 
 print 'Starting program...'

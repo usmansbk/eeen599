@@ -18,6 +18,7 @@ class BatAlgorithm:
         self.iterations = self.rows * self.cols
         self.location = { 'x':0, 'y': 0}
         self.loudness = 1
+        self.operations
 
     def setImage(self, img):
         self.img = img
@@ -36,6 +37,7 @@ class BatAlgorithm:
         self.imgHeight = len(self.img)
         self.subimglength = len(self.subimg[0])
         self.subimgheight = len(self.subimg)
+        self.data = {'mean': self.mean, 'stddev': self.stddev, 'median': self.median}
         self.setParams()
 
     def search(self):
@@ -46,13 +48,13 @@ class BatAlgorithm:
             c = self.location['y'] * self.subimglength
             print 'row', r, ',col', c
             region = getregion(self.gray, r, c, self.subimglength,self.subimgheight, self.imgHeight,self.imglength)
-            data = {'mean': self.mean, 'stddev': self.stddev, 'median': self.median}
-            found = fitness(region, data)
+            self.cur_mean = get_mean(region)
+            self.cur_stddv = stddeviation(region)
+            found = fitness(region, self.data)
             if (found):
                 should_display = True
                 print 'Found at location X:', c, 'Y:',r
                 markRegion(self.imgcopy, r, c, self.subimglength, self.subimgheight)
-                print 'Number of iterations', (itr+1)
                 break
             else:
                 echo = self.emitSonar(self.location['x'], self.location['y'])
@@ -70,41 +72,38 @@ class BatAlgorithm:
     def emitSonar(self, row, col):
         #get regions
         west = east = north = south = None
+        n_fitness = s_fitness = w_fitness = e_fitness = False
         sublen = self.subimglength
         subhigh = self.subimgheight
         imglen = self.imglength
         imghigh = self.imgHeight
         if row > 0:
-            north = getregion(self.gray, row-self.loudness, col, sublen, subhigh, imglen, imghigh)
+            north = getregion(self.gray, (row-self.loudness)*subhigh, col*sublen, sublen, subhigh, imghigh, imglen)
+            n_fitness = fitness(north, self.data)
+            print n_fitness
         if row < self.rows:
-            south = getregion(self.gray, row+self.loudness, col, sublen, subhigh, imglen, imghigh)
-        if col > 0:
-            east = getregion(self.gray, row, col-self.loudness, sublen, subhigh, imglen, imghigh)
+            south = getregion(self.gray, ((row+self.loudness)%self.rows)*subhigh, col*sublen, sublen, subhigh, imghigh, imglen)
+            s_fitness = fitness(south, self.data)
+            print s_fitness
         if col < self.cols:
-            west = getregion(self.gray, row, col+self.loudness, sublen, subhigh, imglen, imghigh)
+            east = getregion(self.gray, row*subhigh, ((col+self.loudness)%self.cols)*sublen, sublen, subhigh, imghigh, imglen)
+            e_fitness = fitness(east, self.data)
+            print e_fitness
+        if col > 0:
+            west = getregion(self.gray, row*subhigh, (col-self.loudness)*sublen, sublen, subhigh, imghigh, imglen)
+            w_fitness = fitness(west, self.data)
+            print w_fitness
 
-        #get best solution
-        best_solution = self.get_bestregion(north, south, east, west)
-        is_detected = best_solution[0]
-        location = best_solution[1]
-
-        echo = [is_detected, {'x': location[0], 'y': location[1]}]
-        return echo
-
-    def get_bestregion(self, north, south, east, west):
-        if north != None:
-            north_data = getData(north, 'n')
-            print 'North', north_data
-        if south != None:
-            south_data = getData(south, 's')
-            print 'South', south_data
-        if east != None:
-            east_data = getData(east, 'e')
-            print 'East', east_data
-        if west != None:
-            west_data = getData(west, 'w')
-            print 'West', west_data
-        return [True, [0, 2]]
+        #get best region
+        if n_fitness:
+            return [True, {'x':-1, 'y':0}]
+        elif s_fitness:
+            return [True, {'x':1, 'y': 0}]
+        elif e_fitness:
+            return [True, {'x':0, 'y':1}]
+        elif w_fitness:
+            return [True, {'x':0, 'y':-1}]
+        return [False, {'x':0, 'y':0}]
 
     def moveBat(self, x_vel, y_vel):
         self.location['x'] = (self.location['x'] + x_vel) % self.rows

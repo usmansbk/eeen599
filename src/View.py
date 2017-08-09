@@ -8,7 +8,7 @@ from PIL import Image, ImageTk
 from ImageModel import ImageModel
 from LocalSearch import LocalSearch
 from BatAlgorithm import BatAlgorithm
-from TestAlgorithm import TestAlgorithm
+from BruteForceAlgorithm import BruteForceAlgorithm
 
 class View:
     def __init__(self, title):
