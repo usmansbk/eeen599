@@ -42,8 +42,8 @@ class BatAlgorithm:
         found = False
         should_display = False
         for itr in range(self.iterations):
-            r = self.location['x']
-            c = self.location['y']
+            r = self.location['x'] * self.subimgheight
+            c = self.location['y'] * self.subimglength
             print 'row', r, ',col', c
             region = getregion(self.gray, r, c, self.subimglength,self.subimgheight, self.imgHeight,self.imglength)
             data = {'mean': self.mean, 'stddev': self.stddev, 'median': self.median}
@@ -55,12 +55,11 @@ class BatAlgorithm:
                 print 'Number of iterations', itr
                 break
             else:
-                #x_vel = random.randrange(self.cols)
-                #y_vel = random.randrange(self.rows)
+                x_vel = random.randrange(self.cols)
+                y_vel = random.randrange(self.rows)
                 self.moveBat(x_vel, y_vel)
         return [should_display, self.imgcopy]
 
     def moveBat(self, x_vel, y_vel):
         self.location['x'] = (self.location['x'] + x_vel) % self.rows
         self.location['y'] = (self.location['y'] + y_vel) % self.cols
-        print self.location
