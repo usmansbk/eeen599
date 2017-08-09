@@ -48,6 +48,6 @@ class TestAlgorithm:
                     should_display = True
                     print 'Found at location X:', c, 'Y:',r
                     markRegion(self.imgcopy, r, c, self.subimglength, self.subimgheight)
-                if found: break
+                    break
             if found: break
         return [should_display, self.imgcopy]

@@ -7,6 +7,7 @@ from tkFileDialog import *
 from PIL import Image, ImageTk
 from ImageModel import ImageModel
 from LocalSearch import LocalSearch
+from BatAlgorithm import BatAlgorithm
 from TestAlgorithm import TestAlgorithm
 
 class View:
@@ -16,6 +17,7 @@ class View:
         self.top.iconbitmap('assets/icon.ico')
     	self.imgfilename = 'assets/noimg.png'
     	self.tmpfilename = 'assets/noimg.png'
+
 
     def load_image(self):
         filename = askopenfilename(parent=self.top)
@@ -59,10 +61,12 @@ class View:
             local_search = LocalSearch(iarr, siarr)
 
             ### Instantiate Algorithm
-            test_algo = TestAlgorithm()
+            #test_algo = TestAlgorithm()
+            bat_algo = BatAlgorithm()
 
             ### Pass Algorithm to local search function
-            found = local_search.search(test_algo)
+            #found = local_search.search(test_algo)
+            found = local_search.search(bat_algo)
             if found:
                 self.var.set('TEMPLATE MATCH FOUND')
             else:

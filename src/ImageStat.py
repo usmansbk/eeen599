@@ -68,8 +68,8 @@ def fitness(region, data):
     print 'standard deviation of image is ', data['stddev']
     mean_diff = abs(mean - data['mean'])
     std_diff = abs(stddev - data['stddev'])
-    median_diff = abs(median - data['median'])
+    median_diff = (median == data['median'])
     found = False
-    if (  mean_diff <=upper_threshold and std_diff <= upper_threshold and median_diff <= upper_threshold):
+    if (  mean_diff <=upper_threshold and std_diff <= upper_threshold and median_diff):
         found = True
     return found
