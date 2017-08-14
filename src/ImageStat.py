@@ -63,6 +63,13 @@ def fitness(region, data):
     mean_diff = abs(mean - data['mean'])
     std_diff = abs(stddev - data['stddev'])
     median_diff = (median == data['median'])
+    print 'Mean of Template:', data['mean']
+    print 'Mean of region:', mean
+    print 'Standard deviation of Template:', data['stddev']
+    print 'Standard deviation of region:', stddev
+    print 'Median of Template:', data['median']
+    print 'Median of region:', median
+    print
     found = False
     if (  mean_diff <=lower_threshold and std_diff <= upper_threshold and median_diff):
         found = True
